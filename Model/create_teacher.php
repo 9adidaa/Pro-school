@@ -57,12 +57,12 @@ if (isset($_POST['email'], $_POST['name'], $_POST['lastname'], $_POST['age'], $_
 
 
         // Send email with the password
-        //$emailSubject = "Welcome to Our Platform";
-        //$emailBodyHtml = "<p>Hello {$name},<br>Your account has been created successfully. Your password is: {$password}. Please change it upon your first login.</p>";
-        //$emailBodyPlain = "Hello {$name},\nYour account has been created successfully. Your password is: {$password}. Please change it upon your first login.";
+        $emailSubject = "Welcome to Our Platform";
+        $emailBodyHtml = "<p>Hello {$name},<br>Your account has been created successfully. Your password is: {$password}. Please change it upon your first login.</p>";
+        $emailBodyPlain = "Hello {$name},\nYour account has been created successfully. Your password is: {$password}. Please change it upon your first login.";
 
         // Call the sendEmail function
-        //sendEmail($email, $name, $emailSubject, $emailBodyHtml, $emailBodyPlain);
+        sendEmail($email, $name, $emailSubject, $emailBodyHtml, $emailBodyPlain);
 
         header('Location: ../view/admin/index.php?page=AT&result=1');
     } else {

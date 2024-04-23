@@ -7,7 +7,7 @@ class config
         if (!isset(self::$pdo)) {
             $servername="localhost";
             $username="root";
-            $password="lmok";
+            $password=" ";
             $dbname="proschool_db";
             try {
                 self::$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password,

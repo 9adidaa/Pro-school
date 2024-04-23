@@ -57,12 +57,11 @@ if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['lastname'])
         }  
         header('Location: ../View/admin/index.php?page=AS&result=1'); // Missing information
 
-        //$emailSubject = "Welcome to Our Platform";
-        //$emailBodyHtml = "<p>Hello {$name},<br>Your account has been created successfully. Your password is: {$password}. Please change it upon your first login.</p>";
-        //$emailBodyPlain = "Hello {$name},\nYour account has been created successfully. Your password is: {$password}. Please change it upon your first login.";
+        $emailSubject = "Welcome to Our Platform";
+        $emailBodyHtml = "<p>Hello {$name},<br>Your account has been created successfully. Your password is: {$password}. Please change it upon your first login.</p>";
+        $emailBodyPlain = "Hello {$name},\nYour account has been created successfully. Your password is: {$password}. Please change it upon your first login.";
 
-        // Call the sendEmail function
-
+        sendEmail($email, $name, $emailSubject, $emailBodyHtml, $emailBodyPlain);
     } else {
         header('Location: ../View/admin/index.php?page=AS&result=3'); // Missing information
     }

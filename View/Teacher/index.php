@@ -1,6 +1,9 @@
 <?php
 include "../../Model/verify_login.php";
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
+
+$eventC = new eventCon("events");
+$events = $eventC->listEvents();
 ?>
 
 <!DOCTYPE html>
