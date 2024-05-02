@@ -1,5 +1,8 @@
 <?php
+
+
 $page = isset($_GET['failed']) ? $_GET['failed'] : null;
+$page = isset($_GET['page']) ? $_GET['page'] : null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,7 +22,7 @@ $page = isset($_GET['failed']) ? $_GET['failed'] : null;
   <div class="container-fluid">
     <form class="mx-auto" method="POST" action="../model/login.php">
       <div class="row">
-        <div class="col">
+        <div class="col text-center">
           <img src="components/images/proschool-logo.png" width="260" alt="">
         </div>
 
@@ -35,15 +38,18 @@ $page = isset($_GET['failed']) ? $_GET['failed'] : null;
       } elseif ($page == '4') {
         echo '<div class="alert alert-danger" role="alert">Please use the login form to submit your data.</div>';
       }
+     elseif ($page == '5') {
+      echo '<div class="alert alert-success" role="alert">Password changed successfully.</div>';
+    }
       ?>
       <div class="mb-3 mt-5">
         <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input name="mail" type="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp">
+        <input name="mail" type="email" class="form-control" placeholder="Enter your Email" id="exampleInputEmail1" required aria-describedby="emailHelp">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
-        <div id="emailHelp" class="form-text mt-3">Forget password ?</div>
+        <input name="password" type="password" class="form-control" placeholder="Enter your Password" id="exampleInputPassword1" required>
+        <div id="emailHelp" class="form-text mt-3"> <a href="forget_password.php">Forget password ?</a> </div>
       </div>
 
       <button type="submit" class="btn btn-primary mt-5">Login</button>

@@ -12,7 +12,7 @@ header("Pragma: no-cache");
 // check if it's set to determine if the user is logged in.
 if (!isset($_SESSION['id'])) {
     // The user is not logged in, redirect to the login page.
-    header('Location: .././index.php');
+    header('Location: ../../../../proschool/view/teacher/template/error-404.html');
     exit;
 }
 

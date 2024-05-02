@@ -38,6 +38,9 @@ $pdo = config::getConnexion();
             </div>
 
             <div class="col-md-12" style="padding-top:20px;">
+                <div>
+                    <input type="text" class="form-control" id="searchInput" onkeyup="searchTable()" placeholder="Search by First Name, Last Name, or Email..." style="margin-bottom: 20px; width: 100%; padding: 10px;">
+                </div>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -84,7 +87,7 @@ $pdo = config::getConnexion();
                                 echo "<td>" . htmlspecialchars($row['age']) . "</td>";
                                 // Directly use the joined class name
                                 echo "<td>" . htmlspecialchars($row['subject_name']) . "</td>";
-                                echo '<td><a href="../../View/admin/index.php?id='.$row['id'].'&page=UT" class="btn btn-primary">EDIT</a></td>';
+                                echo '<td><a href="../../View/admin/index.php?id=' . $row['id'] . '&page=UT" class="btn btn-primary">EDIT</a></td>';
                                 echo '  <td>
                                 <form action="../../model/delete.php" method="POST" onsubmit="return confirm(\'Are you sure?\');">
                                 <input type="hidden" name="url" value="' . htmlspecialchars($page) . '">    
@@ -106,3 +109,28 @@ $pdo = config::getConnexion();
         </div>
     </div>
 </main>
+
+<script>
+function searchTable() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.querySelector(".table-hover");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 1; i < tr.length; i++) { // Start from 1 to skip the table header
+        // Search in second (First Name), third (Last Name), and fourth (Email) columns
+        tr[i].style.display = "none"; // Hide all rows initially
+        for (var j = 1; j <= 3; j++) { // Check columns 1 to 3 (0-indexed, so 1, 2, 3)
+            td = tr[i].getElementsByTagName("td")[j-1]; // j-1 because td index is 0-based
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = ""; // Show row if match is found
+                    break; // Stop loop if a matching value is found
+                }
+            }
+        }
+    }
+}
+</script>

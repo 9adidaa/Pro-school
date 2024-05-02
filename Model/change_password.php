@@ -17,13 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!$user || !password_verify($actualPassword, $user['Password'])) {
         // Actual password is incorrect
-        header('Location: ../view/admin/index.php?page=change_password&result=3'); // Adjust redirect location as needed
+        header('Location: ../view/Student/template/change_password.php?result=3'); // Adjust redirect location as needed
         exit;
     }
 
     if ($newPassword !== $confirmPassword) {
         // New password and confirm password do not match
-        header('Location: ../view/admin/index.php?page=change_password&result=4');
+        header('Location: ../view/Student/template/change_password.php?result=4');
         exit;
     }
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (password_verify($newPassword, $user['Password'])) {
         // New password is the same as the current password
-        header('Location: ../view/admin/index.php?page=change_password&result=4');
+        header('Location: ../view/Student/template/change_password.php?result=4');
         exit;
     }
 
@@ -44,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
 
     if ($updateResult) {
-        header('Location: ../view/admin/index.php?page=change_password&result=1');
+        header('Location: ../view/index.php?page=5');
     } else {
-        header('Location: ../view/admin/index.php?page=change_password&result=2');
+        header('Location: ../view/Student/template/change_password.php?result=2');
     }
 } else {
     // Not a POST request
-    header('Location: ../view/admin/index.php?page=change_password&result=3');
+    header('Location: ../view/Student/template/change_password.php?result=3');
 }
 ?>

@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../projet_WEB"
+		},
+		{
+			"path": "../vendor"
+		},
+		{
+			"path": "../View"
+		},
+		{
+			"path": "../.git"
+		},
+		{
+			"path": "../Controller"
+		}
+	],
+	"settings": {}
+}

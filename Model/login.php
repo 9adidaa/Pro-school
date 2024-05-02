@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $pdo = config::getConnexion();
 
-        $stmt = $pdo->prepare("SELECT id, email, password, role FROM user WHERE email = :email LIMIT 1");
+        $stmt = $pdo->prepare("SELECT id, email, password, role,name,lastname,age,status FROM user WHERE email = :email LIMIT 1");
         $stmt->bindParam(':email', $mail);
         $stmt->execute();
 
@@ -22,6 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['role'] = $user['role'];
+                $_SESSION['name'] = $user['name'];
+                $_SESSION['lastname'] = $user['lastname'];
+                $_SESSION['age'] = $user['age'];
+                $_SESSION['status'] = $user['status'];
 
                 
                 switch ($user['role']) {
@@ -29,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         header('Location: ../view/admin/index.php'); 
                         exit;
                     case '2':
-                        header('Location: ../view/student/index.php'); 
+                        header('Location: ../view/Student/template/index.php'); 
                         exit;
                     case '3':
-                        header('Location: ../view/teacher/index.php'); 
+                        header('Location: ../view/Teacher/template/index.php'); 
                         exit;
                     default:
                         echo 'Undefined user role.';

@@ -27,6 +27,23 @@ class UserCon
         }
     }
 
+    public function getUser_email($email)
+    {
+        $sql = "SELECT * FROM $this->tab_name WHERE email = :id";
+        $db = config::getConnexion();
+
+        try {
+            $query = $db->prepare($sql);
+            $query->bindValue(':id', $email);
+            $query->execute();
+            $user = $query->fetch();
+            return $user;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+
     public function listUsers()
     {
         $sql = "SELECT * FROM $this->tab_name";
